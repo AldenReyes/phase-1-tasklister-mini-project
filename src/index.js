@@ -5,11 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
 3. As a user, I expect to see the task string that I provided appear in the DOM after the submit button has been activated.
 */
 
-const formText = document.querySelector("#new-task-description")
-const submitButton = document.querySelector("input[type='submit']")
-
+const form = document.querySelector("#create-task-form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  handleForm(e.target.querySelector("#new-task-description").value);
+});
 });
 
+function handleForm(form) {
+  const listItem = document.createElement("li");
+  listItem.textContent = form;
+  document.querySelector("#tasks").appendChild(listItem);
+}
 
-const formText = document.querySelector("#new-task-description")
-const submitButton = document.querySelector("input[type='submit']")
